@@ -21,4 +21,3 @@
         <button type="submit" class="btn btn-danger" onclick="return confirm('Вы уверены?')">Удалить</button>
     </form>
 @endsection
-
