@@ -10,7 +10,9 @@
         <tr>
             <th>Название</th>
             <th>Описание</th>
-            <th>Подписант</th>
+            <th>Компания</th> <!-- Новое поле для компании -->
+            <th>Подписан</th>
+            <th>Дата договора</th>
             <th>Действия</th>
         </tr>
         </thead>
@@ -19,7 +21,15 @@
             <tr>
                 <td>{{ $contract->title }}</td>
                 <td>{{ $contract->description }}</td>
+                <td>{{ $contract->company }}</td> <!-- Отображение компании -->
                 <td>{{ $contract->user->name }}</td>
+                <td>
+                    @if($contract->contract_date)
+                        {{ $contract->contract_date->format('d.m.Y') }}
+                    @else
+                        Не указана
+                    @endif
+                </td>
                 <td class="table-actions">
                     <a href="{{ route('contracts.show', $contract->id) }}" class="btn btn-info btn-sm">Просмотр</a>
                     <a href="{{ route('contracts.edit', $contract->id) }}" class="btn btn-warning btn-sm">Редактировать</a>

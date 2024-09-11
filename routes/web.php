@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 
 Route::resource('/books', \App\Http\Controllers\BookController::class);
+Route::resource('companies', \App\Http\Controllers\CompanyController::class);
 
 Route::resource('contracts', ContractController::class);
 

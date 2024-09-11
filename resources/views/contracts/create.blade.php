@@ -25,6 +25,20 @@
             </select>
         </div>
 
+        <div class="mb-3">
+            <label for="company_id" class="form-label">Компания:</label>
+            <select class="form-select" name="company_id" id="company_id" required>
+                @foreach($companies as $company)
+                    <option value="{{ $company->id }}">{{ $company->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="contract_date" class="form-label">Дата договора:</label>
+            <input type="date" class="form-control" name="contract_date" id="contract_date" required>
+        </div>
+
         <button type="submit" class="btn btn-success">Создать договор</button>
         <a href="{{ route('contracts.index') }}" class="btn btn-secondary">Отмена</a>
     </form>

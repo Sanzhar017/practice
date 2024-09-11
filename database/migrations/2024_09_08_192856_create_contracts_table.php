@@ -17,8 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('title'); // Название договора
             $table->text('description'); // Описание договора
+            $table->text('company');
             $table->unsignedBigInteger('user_id'); // ID пользователя
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->date('contract_date'); // Дата договора
             $table->timestamps();
         });
     }

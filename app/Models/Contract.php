@@ -9,7 +9,9 @@ class Contract extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'user_id'];
+    protected $fillable = ['title', 'description', 'user_id','company','contract_date'];
+
+    protected $dates = ['contract_date'];
 
     public function user()
     {

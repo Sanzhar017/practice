@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Contract;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -21,8 +22,9 @@ class ContractController extends Controller
 
     public function create()
     {
+        $companies = Company::get();
         $users = User::all();
-        return view('contracts.create', compact('users'));
+        return view('contracts.create', compact('users','companies'));
     }
 
     public function store(Request $request)
@@ -30,14 +32,22 @@ class ContractController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
+            'company' => 'required|string', // Проверка для поля company
             'user_id' => 'required|exists:users,id',
+            'contract_date' => 'required|date',
         ]);
 
-        Contract::create($request->all());
+        Contract::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'company' => $request->company, // Сохранение поля company
+            'user_id' => $request->user_id,
+            'contract_date' => $request->contract_date,
+        ]);
 
-        return redirect()->route('contracts.index');
+        return redirect()->route('contracts.index')
+            ->with('success', 'Договор успешно создан.');
     }
-
     public function show(Contract $contract)
     {
         return view('contracts.show', compact('contract'));
@@ -54,14 +64,22 @@ class ContractController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
+            'company' => 'required|string', // Проверка для поля company
             'user_id' => 'required|exists:users,id',
+            'contract_date' => 'required|date',
         ]);
 
-        $contract->update($request->all());
+        $contract->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'company' => $request->company, // Обновление поля company
+            'user_id' => $request->user_id,
+            'contract_date' => $request->contract_date,
+        ]);
 
-        return redirect()->route('contracts.index');
+        return redirect()->route('contracts.index')
+            ->with('success', 'Договор успешно обновлен.');
     }
-
     public function destroy(Contract $contract)
     {
         $contract->delete();
