@@ -29,21 +29,16 @@ class ContractController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+
+        $validatedData = $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'company' => 'required|string', // Проверка для поля company
+            'company' => 'required|string',
             'user_id' => 'required|exists:users,id',
             'contract_date' => 'required|date',
         ]);
 
-        Contract::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'company' => $request->company, // Сохранение поля company
-            'user_id' => $request->user_id,
-            'contract_date' => $request->contract_date,
-        ]);
+       Contract::create($validatedData);
 
         return redirect()->route('contracts.index')
             ->with('success', 'Договор успешно создан.');
@@ -61,7 +56,8 @@ class ContractController extends Controller
 
     public function update(Request $request, Contract $contract)
     {
-        $request->validate([
+
+      $validated=   $request->validate([
             'title' => 'required',
             'description' => 'required',
             'company' => 'required|string', // Проверка для поля company
@@ -69,13 +65,7 @@ class ContractController extends Controller
             'contract_date' => 'required|date',
         ]);
 
-        $contract->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'company' => $request->company, // Обновление поля company
-            'user_id' => $request->user_id,
-            'contract_date' => $request->contract_date,
-        ]);
+       Contract::updated($validated);
 
         return redirect()->route('contracts.index')
             ->with('success', 'Договор успешно обновлен.');

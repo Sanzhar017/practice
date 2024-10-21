@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Suka;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -15,8 +16,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create(['name' => 'Иван Иванов', 'email' => 'ivan@example.com']);
-        User::create(['name' => 'Петр Петров', 'email' => 'petr@example.com']);
-        User::create(['name' => 'Мария Смирнова', 'email' => 'maria@example.com']);
+
+        Suka::create(['name' => 'Санжар Толенды']);
     }
 }

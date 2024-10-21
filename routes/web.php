@@ -17,9 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('users', \App\Http\Controllers\UserController::class);
+
 
 Route::resource('/books', \App\Http\Controllers\BookController::class);
 Route::resource('companies', \App\Http\Controllers\CompanyController::class);
 
 Route::resource('contracts', ContractController::class);
 
+Route::resource('suka', \App\Http\Controllers\SukaController::class);
+
+Route::resource('students', \App\Http\Controllers\StudentController::class);
+
+
+Route::resource('teachers', \App\Http\Controllers\TeacherController::class);

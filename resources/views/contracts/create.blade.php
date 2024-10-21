@@ -16,20 +16,17 @@
             <textarea class="form-control" name="description" id="description" rows="4" required></textarea>
         </div>
 
+
+
         <div class="mb-3">
-            <label for="user_id" class="form-label">Подписант:</label>
+            <label for="company" class="form-label">Компания:</label>
+            <input type="text" class="form-control" name="company" id="company" required>
+        </div>
+        <div class="mb-3">
+            <label for="user_id" class="form-label">Подписан</label>
             <select class="form-select" name="user_id" id="user_id" required>
                 @foreach($users as $user)
                     <option value="{{ $user->id }}">{{ $user->name }}</option>
-                @endforeach
-            </select>
-        </div>
-
-        <div class="mb-3">
-            <label for="company_id" class="form-label">Компания:</label>
-            <select class="form-select" name="company_id" id="company_id" required>
-                @foreach($companies as $company)
-                    <option value="{{ $company->id }}">{{ $company->name }}</option>
                 @endforeach
             </select>
         </div>

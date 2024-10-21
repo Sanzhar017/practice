@@ -10,7 +10,7 @@
         <strong>Описание:</strong> {{ $contract->description }}
     </div>
     <div class="mb-3">
-        <strong>Подписант:</strong> {{ $contract->user->name }}
+        <strong>Подписан:</strong> {{ $contract->user->name }}
     </div>
 
     <a href="{{ route('contracts.index') }}" class="btn btn-secondary">Назад к списку</a>
