@@ -16,7 +16,14 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
+        User::create(['name' => 'Sanzhar Tolendy','email' => 'tolendy017@gmail.com']);
 
-        Suka::create(['name' => 'Санжар Толенды']);
+        User::create(['name' => 'Baiken Aktay','email' => 'aktay@gmail.com']);
+
+        User::create(['name' => 'Ali Makhanbetov','email' => 'makhanbetov@gmail.com']);
+
+        User::create(['name' => 'Dimash Abdimuratov','email' => 'dimash777@gmail.com']);
+
+        User::create(['name' => 'Anastasiya Kim','email' => 'anastasiyakim@gmail.com']);
     }
 }

@@ -15,17 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $contractTypes = [
-            ['name' => 'Sales Agreement'],
-            ['name' => 'Service Agreement'],
-            ['name' => 'Rental Agreement'],
-            ['name' => 'Partnership Agreement'],
-        ];
-
-        foreach ($contractTypes as $type) {
-            ContractType::create($type);
-        }
-    }
+        $this->call([
+            ContractTypeSeeder::class,
+            CompanySeeder::class,
+            UserSeeder::class,
+        ]);
 
     }
+
+
 }
